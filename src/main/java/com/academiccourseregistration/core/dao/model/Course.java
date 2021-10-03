@@ -21,7 +21,7 @@ public class Course {
   /*  @ManyToMany
     private Set<Student> students;*/
 
-    @OneToOne(cascade = CascadeType.ALL)
+   /* @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "proffesor_id")
-    private Professor professor;
+    private Professor professor;*/
 }

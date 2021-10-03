@@ -19,6 +19,6 @@ public class Professor {
     private String firstName;
     private String lastName;
 
-    @OneToOne(mappedBy = "address")
-    private Course course;
+    /*@OneToOne(mappedBy = "address")
+    private Course course;*/
 }
