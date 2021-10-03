@@ -15,9 +15,6 @@ public class StudentMapper {
 
     public static Student toEntity(StudentDto dto) {
         Student entity = new Student();
-        if (dto.getId() != null) {
-            entity.setId(dto.getId());
-        }
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
         return entity;
