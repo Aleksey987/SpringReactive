@@ -1,5 +1,7 @@
 package com.academiccourseregistration.core.dao.model;
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Collection;
 import java.util.Set;
 
@@ -11,8 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import com.sun.istack.Nullable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,12 +33,15 @@ import lombok.ToString;
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @NotNull
+    @GeneratedValue(strategy = IDENTITY)
     private long id;
 
+    @NotNull
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @Nullable
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "professor_id")
     private Professor professor;
 
