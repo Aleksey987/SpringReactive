@@ -12,7 +12,6 @@ public class ProfessorMapper {
         dto.setId(entity.getId());
         dto.setFirstName(entity.getFirstName());
         dto.setLastName(entity.getLastName());
-        dto.setCourseId(entity.getCourseId());
         return dto;
     }
 
@@ -20,7 +19,6 @@ public class ProfessorMapper {
         Professor entity = new Professor();
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
-        entity.setCourseId(dto.getCourseId());
         return entity;
     }
 }
