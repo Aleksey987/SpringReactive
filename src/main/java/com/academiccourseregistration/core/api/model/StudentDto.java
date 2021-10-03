@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class StudentDto {
 
-    private long id;
+    private Long id;
 
     @NotNull
     private String firstName;

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class CourseDto {
 
-    private long id;
+    private Long id;
 
     @NotNull
     private String name;

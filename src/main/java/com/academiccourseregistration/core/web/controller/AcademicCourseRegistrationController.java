@@ -2,8 +2,6 @@ package com.academiccourseregistration.core.web.controller;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
-import java.util.Collection;
-
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -66,19 +64,19 @@ public class AcademicCourseRegistrationController {
     }
 
     @PutMapping(REGISTER_STUDENT)
-    public void registerStudentToCourse(@NotNull @PathVariable long courseId,
-            @NotNull @PathVariable long studentId) {
+    public void registerStudentToCourse(@NotNull @PathVariable Long courseId,
+            @NotNull @PathVariable Long studentId) {
         courseService.registerStudentToCourse(courseId, studentId);
     }
 
     @PutMapping(ASSIGN_PROFESSOR)
-    public void assignProfessorToCourse(@NotNull @PathVariable long courseId,
-            @NotNull @PathVariable long professorId) {
+    public void assignProfessorToCourse(@NotNull @PathVariable Long courseId,
+            @NotNull @PathVariable Long professorId) {
         courseService.assignProfessorToCourse(courseId, professorId);
     }
 
     @PutMapping(REGISTER_STUDENT_TO_LIST_OF_COURSES)
-    public void registerStudentToListOfCourses(@NotNull @PathVariable long studentId,
+    public void registerStudentToListOfCourses(@NotNull @PathVariable Long studentId,
             @NotNull @RequestBody CourseIds courseIds) {
         courseService.registerStudentToListOfCourses(studentId, courseIds.getCourseIds());
     }
