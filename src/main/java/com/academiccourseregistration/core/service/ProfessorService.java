@@ -5,8 +5,10 @@ import com.academiccourseregistration.core.dao.mapper.ProfessorMapper;
 import com.academiccourseregistration.core.dao.model.Professor;
 import com.academiccourseregistration.core.dao.repo.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+@Service
 public class ProfessorService {
     @Autowired
     private ProfessorRepository courseRepository;

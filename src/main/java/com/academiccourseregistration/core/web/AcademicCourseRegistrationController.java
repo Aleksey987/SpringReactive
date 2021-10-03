@@ -17,7 +17,9 @@ public class AcademicCourseRegistrationController {
 
     @Autowired
     private StudentService studentService;
+    @Autowired
     private ProfessorService professorService;
+    @Autowired
     private CourseService courseService;
 
     @PostMapping("/students")
@@ -30,6 +32,18 @@ public class AcademicCourseRegistrationController {
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<CourseDto> addCourse(@RequestBody CourseDto course) {
         return courseService.save(course);
+    }
+
+    @PutMapping("/courses/{courseId}/students/{studentId}")
+    public void registerStudentToCourse(@RequestParam int courseId,
+                                        @RequestParam int studentId) {
+        courseService.registerStudentToCourse(courseId, studentId);
+    }
+
+    @PutMapping("/courses/{courseId}/professors/{professorId}")
+    public void assignProfessorToCourse(@RequestParam int courseId,
+                                        @RequestParam int professorId) {
+        courseService.assignProfessorToCourse(courseId, professorId);
     }
 
     @PostMapping("/professors")
