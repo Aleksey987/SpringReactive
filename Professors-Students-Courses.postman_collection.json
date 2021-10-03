@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "ab8bc1a0-c415-40e1-8fa1-e9384bfcc860",
+		"name": "Professors-Students-Courses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add course",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Physics\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/courses",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Bob\",\r\n    \"lastName\": \"Martin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/students",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add professor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Albert\",\r\n    \"lastName\": \"Einstein\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/professors",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"professors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register student to course",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/courses/1/students/1",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"courses",
+						"1",
+						"students",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Assign professor to course",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/courses/1/professors/1",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"courses",
+						"1",
+						"professors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register student to multicourses",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"courseIds\": [\r\n        1,\r\n        2,\r\n        3,\r\n        4\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/students/3/courses",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"students",
+						"3",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
