@@ -1,6 +1,7 @@
 package com.academiccourseregistration.core.service.impl;
 
 import static java.lang.String.format;
+import static java.util.stream.Collectors.toSet;
 
 import static com.academiccourseregistration.core.util.Constants.COURSE_MAX_STUDENTS;
 import static com.academiccourseregistration.core.util.Constants.STUDENT_MAX_COURSES;
@@ -46,7 +47,7 @@ public class CourseServiceImpl implements CourseService {
     @Transactional
     public void registerStudentToCourse(@NotNull Long courseId, @NotNull Long studentId) {
         Student student = studentRepository.getById(studentId);
-        if (student.getCourses().size() == STUDENT_MAX_COURSES) {
+        if (student.getCourses().size() == STUDENT_MAX_COURSES && student.getCourses().stream().noneMatch(it -> it.getId().equals(courseId))) {
             throw new ServiceException(format("Student can't has more than %s course at one time", STUDENT_MAX_COURSES));
         }
         Course course = courseRepository.getById(courseId);
@@ -70,11 +71,14 @@ public class CourseServiceImpl implements CourseService {
     @Transactional
     public void registerStudentToListOfCourses(@NotNull Long studentId, @NotNull Collection<Long> courseIds) {
         Student student = studentRepository.getById(studentId);
-        Collection<Course> courses = courseRepository.findAllById(courseIds);
-        if (student.getCourses().size() + courses.size() > STUDENT_MAX_COURSES) {
+        Collection<Long> studentCourseIds = student.getCourses().stream().map(Course::getId).collect(toSet());
+        Collection<Course> coursesToRegister = courseRepository.findAllById(courseIds).stream()
+                .filter(it -> !studentCourseIds.contains(it.getId()))
+                .collect(toSet());
+        if (student.getCourses().size() + coursesToRegister.size() > STUDENT_MAX_COURSES) {
             throw new ServiceException(format("Student can't has more than %s course at one time", STUDENT_MAX_COURSES));
         }
-        student.getCourses().addAll(courses);
+        student.getCourses().addAll(coursesToRegister);
     }
 
 }
