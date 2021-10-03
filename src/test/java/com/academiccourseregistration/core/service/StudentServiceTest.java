@@ -4,6 +4,8 @@ import com.academiccourseregistration.core.api.model.StudentDto;
 import com.academiccourseregistration.core.dao.mapper.StudentMapper;
 import com.academiccourseregistration.core.dao.model.Student;
 import com.academiccourseregistration.core.dao.repo.StudentRepository;
+import com.academiccourseregistration.core.service.impl.StudentServiceImpl;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,7 +21,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class StudentServiceTest {
 
     @InjectMocks
-    private StudentService studentService;
+    private StudentServiceImpl studentService;
     @Mock
     private StudentRepository studentRepository;
 
