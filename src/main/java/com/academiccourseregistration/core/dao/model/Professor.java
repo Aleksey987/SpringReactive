@@ -1,24 +1,24 @@
 package com.academiccourseregistration.core.dao.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity()
+@Entity
 @Table(name = "professors")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Professor {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String firstName;
     private String lastName;
-
-    /*@OneToOne(mappedBy = "address")
-    private Course course;*/
 }

@@ -2,6 +2,7 @@ package com.academiccourseregistration.core.dao.mapper;
 
 import com.academiccourseregistration.core.api.model.ProfessorDto;
 import com.academiccourseregistration.core.dao.model.Professor;
+
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
