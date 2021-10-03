@@ -34,7 +34,7 @@ public class AcademicCourseRegistrationControllerTest {
     {
         StudentDto student = new StudentDto();
 
-        student.setId(1);
+        student.setId(1L);
         student.setFirstName("FirstName");
         student.setLastName("LastName");
 

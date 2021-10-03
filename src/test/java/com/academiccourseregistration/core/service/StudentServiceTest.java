@@ -31,7 +31,7 @@ public class StudentServiceTest {
         StudentDto studentDto = new StudentDto();
         studentDto.setFirstName("FirstName");
         studentDto.setFirstName("LastName");
-        Student student = new Student(1, "FirstName", "LastName", Collections.emptySet());
+        Student student = new Student(1L, "FirstName", "LastName", Collections.emptySet());
 
         Mockito.when(studentRepository.save(StudentMapper.toEntity(studentDto))).thenReturn(student);
 
