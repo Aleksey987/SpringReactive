@@ -8,7 +8,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class ProfessorMapper {
 
-    public static ProfessorDto toDto(Professor entity) {
+    public ProfessorDto toDto(Professor entity) {
         ProfessorDto dto = new ProfessorDto();
         dto.setId(entity.getId());
         dto.setFirstName(entity.getFirstName());
@@ -16,7 +16,7 @@ public class ProfessorMapper {
         return dto;
     }
 
-    public static Professor toEntity(ProfessorDto dto) {
+    public Professor toEntity(ProfessorDto dto) {
         Professor entity = new Professor();
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());

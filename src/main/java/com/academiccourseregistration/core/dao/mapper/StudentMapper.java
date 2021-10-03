@@ -8,7 +8,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class StudentMapper {
 
-    public static StudentDto toDto(Student entity) {
+    public StudentDto toDto(Student entity) {
         StudentDto dto = new StudentDto();
         dto.setId(entity.getId());
         dto.setFirstName(entity.getFirstName());
@@ -16,7 +16,7 @@ public class StudentMapper {
         return dto;
     }
 
-    public static Student toEntity(StudentDto dto) {
+    public Student toEntity(StudentDto dto) {
         Student entity = new Student();
         entity.setFirstName(dto.getFirstName());
         entity.setLastName(dto.getLastName());
