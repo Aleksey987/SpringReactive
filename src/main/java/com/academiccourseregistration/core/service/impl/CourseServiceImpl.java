@@ -7,6 +7,7 @@ import static com.academiccourseregistration.core.util.Constants.STUDENT_MAX_COU
 
 import java.util.Collection;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.service.spi.ServiceException;
@@ -17,7 +18,6 @@ import org.springframework.validation.annotation.Validated;
 import com.academiccourseregistration.core.api.model.CourseDto;
 import com.academiccourseregistration.core.dao.mapper.CourseMapper;
 import com.academiccourseregistration.core.dao.model.Course;
-import com.academiccourseregistration.core.dao.model.Professor;
 import com.academiccourseregistration.core.dao.model.Student;
 import com.academiccourseregistration.core.dao.repo.CourseRepository;
 import com.academiccourseregistration.core.dao.repo.ProfessorRepository;
@@ -44,7 +44,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public void registerStudentToCourse(@NotNull long courseId, @NotNull long studentId) {
+    public void registerStudentToCourse(@NotNull Long courseId, @NotNull Long studentId) {
         Student student = studentRepository.getById(studentId);
         if (student.getCourses().size() == STUDENT_MAX_COURSES) {
             throw new ServiceException(format("Student can't has more than %s course at one time", STUDENT_MAX_COURSES));
@@ -58,15 +58,17 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public void assignProfessorToCourse(@NotNull long courseId, @NotNull long professorId) {
-        Professor professor = professorRepository.getById(professorId);
+    public void assignProfessorToCourse(@NotNull Long courseId, @NotNull Long professorId) {
+        if (!professorRepository.existsById(professorId)) {
+            throw new EntityNotFoundException(format("There is no such professor with id %s", professorId));
+        }
         Course course = courseRepository.getById(courseId);
-        course.setProfessor(professor);
+        course.setProfessorId(professorId);
     }
 
     @Override
     @Transactional
-    public void registerStudentToListOfCourses(@NotNull long studentId, @NotNull Collection<Long> courseIds) {
+    public void registerStudentToListOfCourses(@NotNull Long studentId, @NotNull Collection<Long> courseIds) {
         Student student = studentRepository.getById(studentId);
         Collection<Course> courses = courseRepository.findAllById(courseIds);
         if (student.getCourses().size() + courses.size() > STUDENT_MAX_COURSES) {

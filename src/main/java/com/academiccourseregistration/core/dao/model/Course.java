@@ -2,18 +2,14 @@ package com.academiccourseregistration.core.dao.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import java.util.Collection;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -35,15 +31,13 @@ public class Course {
     @Id
     @NotNull
     @GeneratedValue(strategy = IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     private String name;
 
     @Nullable
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "professor_id")
-    private Professor professor;
+    private Long professorId;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

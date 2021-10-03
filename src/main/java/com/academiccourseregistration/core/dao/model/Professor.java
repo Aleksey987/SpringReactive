@@ -22,7 +22,7 @@ public class Professor {
     @Id
     @NotNull
     @GeneratedValue(strategy = IDENTITY)
-    private long id;
+    private Long id;
 
     @NotNull
     private String firstName;

@@ -12,9 +12,9 @@ public interface CourseService {
 
     Mono<CourseDto> save(@NotNull CourseDto course);
 
-    void registerStudentToCourse(@NotNull long courseId, @NotNull long studentId);
+    void registerStudentToCourse(@NotNull Long courseId, @NotNull Long studentId);
 
-    void assignProfessorToCourse(@NotNull long courseId, @NotNull long professorId);
+    void assignProfessorToCourse(@NotNull Long courseId, @NotNull Long professorId);
 
-    void registerStudentToListOfCourses(@NotNull long studentId, @NotNull Collection<Long> courseIds);
+    void registerStudentToListOfCourses(@NotNull Long studentId, @NotNull Collection<Long> courseIds);
 }

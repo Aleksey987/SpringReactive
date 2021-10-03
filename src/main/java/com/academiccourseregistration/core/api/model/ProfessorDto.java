@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ProfessorDto {
 
-    private long id;
+    private Long id;
 
     @NotNull
     private String firstName;
@@ -15,5 +15,5 @@ public class ProfessorDto {
     @NotNull
     private String lastName;
 
-    private int courseId;
+    private Long courseId;
 }
