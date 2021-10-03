@@ -30,7 +30,7 @@ public class AcademicCourseRegistrationControllerTest {
     private WebTestClient webClient;
 
     @Test
-    public void saveStudentTest()
+    public void addStudentTest()
     {
         StudentDto student = new StudentDto();
 
