@@ -2,6 +2,8 @@ package com.academiccourseregistration.core.web.controller;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
+import static com.academiccourseregistration.core.web.controller.AcademicCourseRegistrationController.API;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -28,8 +30,10 @@ import reactor.core.publisher.Mono;
 @Validated
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping(API)
 public class AcademicCourseRegistrationController {
+
+    public static final String API = "/api";
 
     public static final String STUDENTS = "/students";
     public static final String COURSES = "/courses";
